@@ -1,15 +1,15 @@
 module Conditions
 
-    WIN_MOVES {
-        rock: :scissors,
-        paper: :rock,
-        scissors: :paper,
-        lizard: :spock,
-        spock: :scissors,
-        scissors: :lizard,
-        lizard: :paper,
-        paper: :spock,
-        spock: :rock
-    }
+    attr_reader :win_conditions
+
+    def win_conditions 
+        {
+            rock: [:scissors, :lizard],
+            paper: [:rock, :spock],
+            scissors: [:paper, :lizard],
+            lizard: [:spock, :paper],
+            spock: [:scissors, :rock]
+        }
+    end
     
 end
