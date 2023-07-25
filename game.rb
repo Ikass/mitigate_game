@@ -29,7 +29,8 @@ class Game
     end
 
     def print_stats
-        puts "\nGame score:" + "\n"
+        puts "\n".ljust(60, '-')
+        puts "Game score:" + "\n"
         puts "The number of games you won: #{@user_player.score}"
         if @user_player.won?
             puts "YOU WON ALL 3 GAMES!!"
@@ -48,10 +49,10 @@ class Game
             puts "#{@user_player.name.capitalize} plays against #{pc_player.name}".center(59, '.')
             play_rounds(pc_player, game_scores)
             if game_scores[:user_player] > game_scores[:pc_player] 
-                puts "You won the game!"
+                puts "\nYou won the game!"
                 @user_player.score += 1; 
             else
-                puts "You lost.."
+                puts "\n#{pc_player.name} won the game."
             end
         end
 
@@ -64,13 +65,15 @@ class Game
         1.upto(@rounds_to_play) do |round|
             puts "\nRound #{round}:".ljust(42, '.')
             # user_player makes a guess
-            @user_guess = @user_player.make_guess
+            # @user_guess = @user_player.make_guess
+            puts "Please choose one: - rock, paper, scissors, lizard or spock: "
+            @user_guess = gets.chomp.downcase.to_sym
             puts "User guess:".ljust(30, '.') + "#{@user_guess}"
             # pc_player makes a guess
             @pc_guess = pc_player.make_guess
             puts "#{pc_player.name} guess:".ljust(30, '.') + "#{@pc_guess}"
             winner_is(@user_guess, @pc_guess, pc_player, game_scores)
-            puts game_scores
+            # puts game_scores
       end
     end
 

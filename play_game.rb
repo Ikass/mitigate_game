@@ -1,8 +1,8 @@
 require_relative 'game'
 
-new_game = Game.new(3)
-default_player_file = File.join(File.dirname(__FILE__), 'players.csv')
-new_game.load_players(ARGV.shift || default_player_file)
+new_game = Game.new.play_game
+# default_player_file = File.join(File.dirname(__FILE__), 'players.csv')
+# new_game.load_players(ARGV.shift || default_player_file)
 
 loop do
   puts "\nHow many players? (from 1 to 9)"
