@@ -11,8 +11,4 @@ class MakeGuess
         @gesture = @gestures.sample
     end
 
-    def guess
-        @guess = die_roll
-        # puts "Guess: #{@guess}."
-    end
 end

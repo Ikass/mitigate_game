@@ -1,26 +1,29 @@
+require_relative "make_guess"
+
 class Player
 
-    attr_accessor :name
+    attr_accessor :name, :score
 
     def initialize(name)
-        @name = name.capitalize
+        @name = name
+        @score = 0
     end
 
-    def self.from_csv(string)
-        name = string
-        player = Player.new(name)
+    def make_guess
+        @guess = MakeGuess.new.die_roll
     end
 
-    def name=(new_name)
-        @name = new_name.capitalize
-    end
-
-    def score
-        # @health + points
+    def add_score
+        @score += 1
     end
 
     def to_s
         "I'm #{@name} with a score of #{score}."
+    end
+
+    # players wins, if beats all 3 pc_players
+    def won?
+        @score == 3
     end
 
 
